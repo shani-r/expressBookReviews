@@ -19,7 +19,14 @@ public_users.get('/',function (req, res) {
 // Get book details based on ISBN
 public_users.get('/isbn/:isbn',function (req, res) {
   //Write your code here
-  return res.status(300).json();
+  let isbn = req.params.isbn;
+  let booksList=Object.values(books)
+  let book = booksList.find(b => b.isbn===isbn);
+  if (book) {
+    let bookDetails = JSON.stringify(book);
+    res.send(`Book details for ISBN ${isbn}: ${bookDetails}`);
+  } else {
+    res.send(`No book found for ISBN ${isbn}`);}
  });
   
 // Get book details based on author
