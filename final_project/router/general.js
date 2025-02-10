@@ -12,8 +12,8 @@ public_users.post("/register", (req,res) => {
 
 // Get the book list available in the shop
 public_users.get('/',function (req, res) {
-    res.send(JSON.stringify(books,null,3)); //Write your code here
-  return res.status(300).json(`List of Books available: \n${booksList}`);
+    const booksList = JSON.stringify(books, null, 2);
+    return res.status(300).send(`List of books available: \n${booksList}`);
 });
 
 // Get book details based on ISBN
